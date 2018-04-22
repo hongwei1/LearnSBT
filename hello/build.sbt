@@ -9,6 +9,14 @@ import Dependencies._
 //project/
 //  Dependencies.scala
 
+//build.sbt defines subprojects, which holds a sequence of key-value pairs 
+// called setting expressions using build.sbt DSL
+
+//My first task key. here just define the key.
+lazy val hello = taskKey[Unit]("An example task")
+//
+val derby = "org.apache.derby" % "derby" % "10.4.1.3"
+
 lazy val root = (project in file(".")).
   settings(
     inThisBuild(
@@ -21,9 +29,18 @@ lazy val root = (project in file(".")).
         
       )
     ),
+    //This a a settingKey, show
     name := "Hello",
     
+    //Here, we set the value to the key and call some methods, sbt can use!!
+    hello := { println("Hellow Hongwei ,this is the sbt for you  !")},
     
-    libraryDependencies += scalaTest % Test
+    libraryDependencies += scalaTest % Test,
+    libraryDependencies += derby
   )
+
+
+//build.sbt may also be interspersed with vals, lazy vals, and defs. 
+// Top-level objects and classes are not allowed in build.sbt. 
+// Those should go in the project/ directory as Scala source files.
 
