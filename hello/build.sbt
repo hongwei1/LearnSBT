@@ -17,6 +17,7 @@ lazy val hello = taskKey[Unit]("An example task")
 //
 val derby = "org.apache.derby" % "derby" % "10.4.1.3"
 
+
 lazy val root = (project in file(".")).
   settings(
     inThisBuild(
